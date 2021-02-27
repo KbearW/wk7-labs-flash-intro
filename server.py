@@ -20,7 +20,7 @@ def start_here():
 
     return """<!doctype html>
     <html>Hi! This is the home page.
-    <a href="hello">Click Here!</a>
+    <a href="hello">Take me to the beginning!</a>
     </html>"""
 
 
@@ -39,6 +39,22 @@ def say_hello():
         <form action="/greet">
           What's your name? <input type="text" name="person">
           <input type="submit" value="Submit">
+          <p>
+            <label>When should we deliver?</label>
+            <input type="radio" name="compliment" value="Mr."> Mr.
+            <input type="radio" name="compliment" value="Miss"> Miss
+            <input type="radio" name="compliment" value="Mrs."> Mrs.
+          </p>
+          '''This is for drop down'''
+          # <p>
+          # <form>
+          #   How would you like to be address?
+          #   <select name="compliment1"> 
+          #     <option value = "1">1 </option>
+          #     <option value = "2">2 </option>
+          #     <option value = "3">3 </option>
+          # </form>
+          # </p>
         </form>
       </body>
     </html>
@@ -50,20 +66,21 @@ def greet_person():
     """Get user by name."""
 
     player = request.args.get("person")
+    compliment = request.args.get("compliment")
+    compliment1 = request.args.get("compliment1")
+    # compliment = choice(AWESOMENESS)
 
-    compliment = choice(AWESOMENESS)
-
-    return """
+    return f"""
     <!doctype html>
     <html>
       <head>
         <title>A Compliment</title>
       </head>
       <body>
-        Hi, {}! I think you're {}!
+        Hi, {player}! I think you're {compliment}, {compliment1}!
       </body>
     </html>
-    """.format(player, compliment)
+    """
 
 
 if __name__ == '__main__':
